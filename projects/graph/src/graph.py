@@ -3,10 +3,19 @@ Simple graph implementation
 """
 
 
-class Vertex:
-    def __init__(self, vertex_id):
-        self.id = vertex_id
-        self.edges = set()
+class Queue:
+    def __init__(self):
+        self.queue = []
+    def enqueue(self, value):
+        self.queue.append(value)
+    def dequeue(self):
+        if self.size() > 0:
+            return self.queue.pop(0)
+        else:
+            return None
+    def size(self):
+        return len(self.queue)
+
 
 class Graph:
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
@@ -25,3 +34,8 @@ class Graph:
             self.vertices[v1].edges.add(v2)
         else:
             raise IndexError('Vertex not found')
+
+class Vertex:
+    def __init__(self, vertex_id):
+        self.id = vertex_id
+        self.edges = set()
