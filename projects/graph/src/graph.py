@@ -35,6 +35,28 @@ class Graph:
         else:
             raise IndexError('Vertex not found')
 
+    def bft(self, starting_node):
+        # create an empty Queue
+        q = Queue()
+        # create an empty visited list
+        visited = set()
+        # add the start node to the queue
+        q.enqueue(starting_node)
+        # while the Queue is not empty...
+        while q.size() > 0:
+            # remove the first node from the Queue
+            node = q.dequeue()
+            # check if node is visited
+            if node not in visited:
+                # if not, mark node as visited
+                print(node)
+                visited.add(node)
+                # print(self.vertices[node].edges)
+                # then put all its children in the queue
+                for child in self.vertices[node].edges:
+                    # if child not in visited:
+                        q.enqueue(child)
+
 class Vertex:
     def __init__(self, vertex_id):
         self.id = vertex_id
