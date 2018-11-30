@@ -3,6 +3,11 @@ Simple graph implementation
 """
 
 
+class Vertex:
+    def __init__(self, vertex_id):
+        self.id = vertex_id
+        self.edges = set()
+
 class Graph:
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
     def __init__(self):
