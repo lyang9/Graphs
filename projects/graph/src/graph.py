@@ -89,8 +89,33 @@ class Graph:
                 # then put all its children in the Stack
                 for child in self.vertices[node].edges:
                     s.push(child)
+    
+    # mark the starting node as visited,
+    # then for each unvisited child,
+    # call dft_r on that child
+    def dft_r(self, starting_node, visited = None):
+        if visited is None:
+            visited = set()
+        # mark starting_node as visited
+        print(starting_node)
+        visited.add(starting_node)
+        for child in self.vertices[starting_node].edges:
+            # for each unvisited child...
+            if child not in visited:
+                # ...call dft_r on that child
+                self.dft_r(child, visited)
+
+
+
 
 class Vertex:
     def __init__(self, vertex_id):
         self.id = vertex_id
         self.edges = set()
+
+
+
+# Graphs I day 1 - https://www.youtube.com/watch?v=qWQORVXLXgE
+# Graphs I day 2 - https://www.youtube.com/watch?v=erlKh2fGPYI
+# Graphs II day 1 - https://www.youtube.com/watch?v=yj2dOI67ewk
+# Graphs II day 2 - https://youtu.be/OiI5HUHWbQU
