@@ -105,8 +105,29 @@ class Graph:
                 # ...call dft_r on that child
                 self.dft_r(child, visited)
 
-
-
+    def bfs(self, starting_node, destination_node):
+        # create an empty an Queue
+        q = Queue()
+        # create an empty visited list
+        visited = set()
+        # add the initial path to the queue
+        q.enqueue([starting_node])
+        # while the Queue is not empty...
+        while q.size() > 0:
+            # remove the first path from the Queue
+            path = q.dequeue()
+            # if last node in the path has not been visited
+            if path[-1] not in visited:
+                # mark it as visited
+                if destination_node == path[-1]:
+                    return path
+                visited.add(path[-1])
+                # then put the path to all its children in the queue
+                for child in self.vertices[path[-1]].edges:
+                    new_path = list(path)       # copying the list otherwise we're going to be using the same instance of list and adding multiple times to it, which will not work
+                    new_path.append(child)
+                    q.enqueue(new_path)
+        return None
 
 class Vertex:
     def __init__(self, vertex_id):
