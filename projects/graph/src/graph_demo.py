@@ -37,7 +37,11 @@ def main():
 
     # print(graph.dft_r(1))
     # print(graph.dft_r(3))
-    print(graph.dft_r(4))
+    # print(graph.dft_r(4))
+
+    # print(graph.bfs(1, 3))
+    # print(graph.bfs(1, 7))
+    print(graph.bfs(3, 7))
 
 
 if __name__ == '__main__':
