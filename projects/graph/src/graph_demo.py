@@ -41,7 +41,11 @@ def main():
 
     # print(graph.bfs(1, 3))
     # print(graph.bfs(1, 7))
-    print(graph.bfs(3, 7))
+    # print(graph.bfs(3, 7))
+
+    print(graph.dfs(1, 4))
+    print(graph.dfs(1, 3))
+    print(graph.dfs(1, 5))
 
 
 if __name__ == '__main__':
