@@ -106,7 +106,7 @@ class Graph:
                 self.dft_r(child, visited)
 
     def bfs(self, starting_node, destination_node):
-        # create an empty an Queue
+        # create an empty Queue
         q = Queue()
         # create an empty visited list
         visited = set()
@@ -128,6 +128,31 @@ class Graph:
                     new_path.append(child)
                     q.enqueue(new_path)
         return None
+
+    def dfs(self, starting_node, destination_node):
+        # create an empty Stack
+        s = Stack()
+        # create an empty visited list
+        visited = set()
+        # add the initial path to the stack
+        s.push([starting_node])
+        # while the Stack is not empty...
+        while s.size() > 0:
+            # remove the first path from the Stack
+            path = s.pop()
+            # if last node in the path has not been visited
+            if path[-1] not in visited:
+                # mark it as visited
+                if destination_node == path[-1]:
+                    return path
+                visited.add(path[-1])
+                # then put the path to all its children in the stack
+                for child in self.vertices[path[-1]].edges:
+                    new_path = list(path)
+                    new_path.append(child)
+                    s.push(new_path)
+        return None
+
 
 class Vertex:
     def __init__(self, vertex_id):
